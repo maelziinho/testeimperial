@@ -212,9 +212,9 @@ function filterProducts(categoria) {
 
 function renderFilteredPage(products) {
     const container = document.getElementById("produtos");
-    container.innerHTML = '';  // Limpa os produtos anteriores
+    container.innerHTML = '';
     if (products.length === 0) {
-        container.innerHTML = '<p>Nenhum produto encontrado.</p>';  // Exibe mensagem se nenhum produto for encontrado
+        container.innerHTML = '<p>Nenhum produto encontrado.</p>';
     } else {
         products.forEach(produto => {
             const productDiv = document.createElement('div');
@@ -237,7 +237,7 @@ function renderFilteredPage(products) {
             productDiv.appendChild(productDescription);
 
             const addToCartButton = document.createElement('button');
-            addToCartButton.textContent = `Adicionar ao Carrinho (${produto.quantity || 0})`;
+            addToCartButton.textContent = `Pedir Agora (${produto.quantity || 0})`;
             addToCartButton.onclick = () => addToCart(produto);
             productDiv.appendChild(addToCartButton);
 
@@ -267,7 +267,7 @@ function updateProductQuantity(productId) {
         const productName = productDiv.querySelector('h3').textContent;
         const product = produtos.find(p => p.nome === productName);
         if (product && product.id === productId) {
-            addToCartButton.textContent = `Adicionar ao Carrinho (${cart.find(item => item.id === productId)?.quantity || 0})`;
+            addToCartButton.textContent = `Pedir Agora (${cart.find(item => item.id === productId)?.quantity || 0})`;
         }
     });
 }
@@ -321,7 +321,7 @@ function updateCart(deliveryFee = 0) {
         cartItemDiv.appendChild(adjustButtons);
 
         const removeButton = document.createElement('span');
-        removeButton.textContent = '🗑️'; // O "X" vermelho
+        removeButton.textContent = '🗑️'; // Ícone de lixeira
         removeButton.classList.add('remove-item');
         removeButton.onclick = () => removeFromCart(item);
         cartItemDiv.appendChild(removeButton);
@@ -380,7 +380,7 @@ function finalizeOrder() {
         alert("Por favor, adicione pelo menos um produto ao carrinho.");
         return;
     }
-    
+
     const customerName = document.getElementById('nameInput').value.trim();
     if (!document.querySelector('input[name="paymentOption"]:checked')) {
         alert("Por favor, selecione um método de pagamento.");
@@ -400,6 +400,10 @@ function finalizeOrder() {
     }
 
     document.getElementById('finalMessage').style.display = 'block';
+
+    // Esvaziar carrinho após a finalização do pedido
+    cart = [];
+    updateCart();
 }
 
 function sendOrder() {
