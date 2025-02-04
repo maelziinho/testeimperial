@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Imperial Burguer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="imagens/logo.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="header" id="header">
+        <img src="imagens/logoimperial.png" alt="Imperial Burguer">
+        <p class="header-slogan">"Bem-vindo ao império do sabor!"</p>
+        <button class="catalog-button" onclick="showCatalog()">Visualizar Catálogo</button>
+        <div class="informacoes" id="informacoes">
+            <p><i class="fas fa-clock clock-icon"></i> Horários de Funcionamento: 18:30 - 22:00</p>
+            <p><i class="fas fa-motorcycle motorcycle-icon"></i> Serviços de Delivery disponível, faça seu pedido!</p>
+        </div>
+    </div>
+
+    <div class="categorias" id="categorias" style="display: none;">
+        <button class="categoria-button" onclick="filterProducts('Burguer')">Burguer</button>
+        <button class="categoria-button" onclick="filterProducts('Duplos')">Duplos</button>
+        <button class="categoria-button" onclick="filterProducts('Porções')">Porções</button>
+        <button class="categoria-button" onclick="filterProducts('Bebidas')">Bebidas</button>
+        <button class="categoria-button" onclick="filterProducts('Molhos')">Molhos e Acompanhamentos</button>
+    </div>
+
+    <div class="catalogo" id="catalogo" style="display: none;">
+        <h1>Imperial Burguer</h1>
+        <div class="grid" id="produtos"></div>
+    </div>
+
+    <div class="cart-icon" id="cartIcon" onclick="toggleCart()" style="display: none;">🛒<span id="cartCount">0</span></div>
+    <div class="cart-details" id="cartDetails">
+        <h3>Carrinho</h3>
+        <div id="cartItems"></div>
+        <div id="cartTotal"></div>
+        <textarea id="orderNotes" placeholder="Adicione observações ao pedido aqui..."></textarea>
+
+        <div class="delivery-option">
+            <p>Escolha a opção:</p>
+            <input type="radio" id="delivery" name="deliveryOption" value="Delivery" onchange="handleDeliveryOptionChange(this.value)">
+            <label for="delivery">Delivery</label>
+            <input type="radio" id="pickup" name="deliveryOption" value="Retirada" onchange="handleDeliveryOptionChange(this.value)">
+            <label for="pickup">Retirada</label>
+        </div>
+
+        <div class="location-option" id="locationOption" style="display: none;">
+            <p>Selecione sua localização:</p>
+            <select id="locationSelect" onchange="updateDeliveryFee()">
+                <option value="" disabled selected>Selecione sua localização</option>
+                <option value="Barro Vermelho" data-fee="3.00">Barro Vermelho - R$ 3.00</option>
+                <option value="Alquebre (Tamnundé)" data-fee="5.00">Alquebre - R$ 5.00</option>
+                <option value="Pé do Morro" data-fee="4.00">Pé do Morro - R$ 4.00</option>
+                <option value="Malhada" data-fee="1.00">Malhada - R$ 1.00</option>
+                <option value="Impuzinho" data-fee="3.00">Impuzinho - R$ 2.00</option>
+                <option value="Chapada dos Ribeiros" data-fee="3.00">Chapada dos Ribeiros - R$ 3.00</option>
+                <option value="Chapada do Papoco" data-fee="4.00">Chapada do Papoco - R$ 4.00</option>
+            </select>
+        </div>
+
+        <div class="payment-option">
+            <p>Forma de pagamento:</p>
+            <input type="radio" id="card" name="paymentOption" value="Cartão">
+            <label for="card">Cartão</label>
+            <input type="radio" id="cash" name="paymentOption" value="Dinheiro">
+            <label for="cash">Dinheiro</label>
+            <input type="radio" id="pix" name="paymentOption" value="Pix">
+            <label for="pix">Pix</label>
+        </div>
+
+        <div class="customer-name" id="customerName" style="display: none;">
+            <p>Informe seu nome:</p>
+            <input type="text" id="nameInput" placeholder="Seu nome">
+        </div>
+
+        <button onclick="finalizeOrder()" style="margin-top: 20px;">Finalizar Compra</button>
+        <div id="finalMessage" style="display: none;">
+            <p>Obrigado pelo seu pedido, iremos prepará-lo com muito carinho. O tempo de espera é de aproximadamente 30 a 40 minutos!</p>
+            <button onclick="sendOrder()">Enviar Pedido via WhatsApp</button>
+        </div>
+    </div>
+
+    <footer class="footer" id="mainFooter" style="display: none;">
+        <div class="social-media">
+            <p>Siga-nos:</p>
+            <a href="https://www.instagram.com/_imperial.burguer" target="_blank">
+                <i class="fab fa-instagram instagram-icon"></i>
+            </a>
+            <a href="https://wa.me/5511965201725" target="_blank">
+                <i class="fab fa-whatsapp whatsapp-icon"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
