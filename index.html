@@ -56,7 +56,7 @@
                 <option value="Alquebre (Tamnundé)" data-fee="5.00">Alquebre - R$ 5.00</option>
                 <option value="Pé do Morro" data-fee="4.00">Pé do Morro - R$ 4.00</option>
                 <option value="Malhada" data-fee="1.00">Malhada - R$ 1.00</option>
-                <option value="Impuzinho" data-fee="3.00">Impuzinho - R$ 2.00</option>
+                <option value="Impuzinho" data-fee="3.00">Impuzinho - R$ 3.00</option>
                 <option value="Chapada dos Ribeiros" data-fee="3.00">Chapada dos Ribeiros - R$ 3.00</option>
                 <option value="Chapada do Papoco" data-fee="4.00">Chapada do Papoco - R$ 4.00</option>
             </select>
@@ -75,12 +75,11 @@
         <div class="customer-name" id="customerName" style="display: none;">
             <p>Informe seu nome:</p>
             <input type="text" id="nameInput" placeholder="Seu nome">
+            <button onclick="showFinalMessage()">OK</button>
         </div>
-
-        <button onclick="finalizeOrder()" style="margin-top: 20px;">Finalizar Compra</button>
         <div id="finalMessage" style="display: none;">
             <p>Obrigado pelo seu pedido, iremos prepará-lo com muito carinho. O tempo de espera é de aproximadamente 30 a 40 minutos!</p>
-            <button onclick="sendOrder()">Enviar Pedido via WhatsApp</button>
+            <button id="finalizeButton" style="margin-top: 20px;">Finalizar e Enviar Pedido</button>
         </div>
     </div>
 
@@ -90,7 +89,7 @@
             <a href="https://www.instagram.com/_imperial.burguer" target="_blank">
                 <i class="fab fa-instagram instagram-icon"></i>
             </a>
-            <a href="https://wa.me/5511965201725" target="_blank">
+            <a href="https://wa.me/5588993467578" target="_blank">
                 <i class="fab fa-whatsapp whatsapp-icon"></i>
             </a>
         </div>
