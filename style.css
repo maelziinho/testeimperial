@@ -173,6 +173,33 @@ textarea#orderNotes {
 .delivery-option p, .location-option p, .payment-option p, .customer-name p {
     margin: 0;
     font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.customer-name {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.customer-name input {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.customer-name button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f9b025;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.customer-name button:hover {
+    background-color: #c78c1d;
 }
 
 .delivery-option label, .payment-option label {
@@ -194,7 +221,7 @@ textarea#orderNotes {
     background: #f0f0f0;
     border: 1px solid #ccc;
     border-radius: 5px;
-    text-align: center;
+    text-align: left;
 }
 
 #finalMessage p {
